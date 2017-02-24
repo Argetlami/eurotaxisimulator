@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,12 +11,26 @@ public class PlayerController : MonoBehaviour
 	public float jumpHeight;
 	public float rotationSpeed;
 
+    public Transform groundCheckWheel;
+    public float groundCheckRadiusWheel;
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask whatIsGround;
+    private Boolean groundedWheel;
+    private Boolean grounded;
+
 	// Use this for initialization
 	void Start ()
 	{
 		player = GameObject.Find ("taxi");
 	}
 
+    // FixedUpdate is called multiple times in a second; unlike Update(), it's based on time, not frames
+    private void FixedUpdate()
+    {
+        groundedWheel = Physics2D.OverlapCircle(groundCheckWheel.position, groundCheckRadiusWheel, whatIsGround);
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+    }
 	// Update is called once per frame
 	void Update ()
 	{
@@ -27,11 +42,11 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.D)) {
 			player.transform.Rotate (0, 0, -rotationSpeed);
 		}
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Space) && grounded) {
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D> ().velocity.x, jumpHeight);
 		}
-		if (Input.GetKey (KeyCode.W)) {
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (moveSpeed, GetComponent<Rigidbody2D> ().velocity.y);
+		if (groundedWheel && GetComponent<Rigidbody2D>().velocity.x < moveSpeed) {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x + 0.2F, GetComponent<Rigidbody2D> ().velocity.y);
 		}
 
 
