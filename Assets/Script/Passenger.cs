@@ -21,4 +21,8 @@ public class Passenger
 	{
 		this.frustration = value;
 	}
+    public void adjustFrustration (float amount)
+    {
+        this.frustration += amount;
+    }
 }

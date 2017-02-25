@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsGround;
     private Boolean groundedWheel;
     private Boolean grounded;
+    private static Boolean speedChecker;
+    private static float speed;
+
+    public PlayerController() {}
 
 	// Use this for initialization
 	void Start ()
@@ -48,7 +52,20 @@ public class PlayerController : MonoBehaviour
 		if (groundedWheel && GetComponent<Rigidbody2D>().velocity.x < moveSpeed) {
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x + 0.2F, GetComponent<Rigidbody2D> ().velocity.y);
 		}
+        speed = GetComponent<Rigidbody2D>().velocity.x;
 
-
-	}
+    }
+    public static Boolean speedCheck()
+    {
+        if (speed < 6)
+        {
+            speedChecker = false;
+            return false;
+        }
+        else
+        {
+            speedChecker = true;
+            return true;
+        }
+    }
 }

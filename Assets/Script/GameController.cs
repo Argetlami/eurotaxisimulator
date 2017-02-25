@@ -16,10 +16,16 @@ public class GameController : MonoBehaviour
 	{
 		GameObject PlayerObject = GameObject.Find ("taxi");
 		PlayerObject.transform.position = new Vector3 (testLevel.getLevelx(), testLevel.getLevely(), 0);
+        
 	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    void FixedUpdate()
+    {
+        FrustrationManager.manageFrustration(testPassenger);
+    }
+
+    // Update is called once per frame
+    void Update ()
 	{
 		if (testPassenger.getFrustration() == 100) {
 			died = true;
