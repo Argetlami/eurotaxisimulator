@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update ()
 	{
-		if (testPassenger.getFrustration() == 100) {
+		if (testPassenger.getFrustration () == 100) {
 			died = true;
 		}
 	}

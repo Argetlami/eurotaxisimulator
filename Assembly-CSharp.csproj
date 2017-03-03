@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Script\CameraController.cs" />
+     <Compile Include="Assets\Script\CoinPickup.cs" />
      <Compile Include="Assets\Script\Enemy.cs" />
      <Compile Include="Assets\Script\FrustrationManager.cs" />
      <Compile Include="Assets\Script\GameController.cs" />

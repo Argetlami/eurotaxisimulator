@@ -11,7 +11,7 @@ public class ScoreManager : MonoBehaviour {
 
     void Start()
     {
-        moneyfield = GetComponent<Text>();
+		moneyfield = GameObject.Find("MoneyAmount").GetComponent<Text>();
         money = 0;
     }
 
