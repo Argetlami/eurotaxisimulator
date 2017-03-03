@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +8,10 @@ public class PlayerController : MonoBehaviour
 
 	GameObject player;
 	public float moveSpeed;
+	public float accelerationSpeed;
 	public float jumpHeight;
 	public float rotationSpeed;
+	public float currentSpeed;
 
     public Transform groundCheckWheel;
     public float groundCheckRadiusWheel;
@@ -19,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Boolean groundedWheel;
     private Boolean grounded;
     private static Boolean speedChecker;
-    private static float speed;
+    public static float speed;
 
     public PlayerController() {}
 
@@ -38,8 +40,6 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		// mainCamera.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-		// mainCamera.transform.Rotate(player.transform.rotation.x, player.transform.rotation.y, -player.transform.rotation.z);
 		if (Input.GetKey (KeyCode.A)) {
 			player.transform.Rotate (0, 0, rotationSpeed);
 		}
@@ -50,9 +50,13 @@ public class PlayerController : MonoBehaviour
 			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D> ().velocity.x, jumpHeight);
 		}
 		if (groundedWheel && GetComponent<Rigidbody2D>().velocity.x < moveSpeed) {
-			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x + 0.2F, GetComponent<Rigidbody2D> ().velocity.y);
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x + accelerationSpeed, GetComponent<Rigidbody2D> ().velocity.y);
+		}
+		if (groundedWheel && Input.GetKey(KeyCode.S)) {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x + (-accelerationSpeed), GetComponent<Rigidbody2D> ().velocity.y);
 		}
         speed = GetComponent<Rigidbody2D>().velocity.x;
+		currentSpeed = speed;
 
     }
     public static Boolean speedCheck()

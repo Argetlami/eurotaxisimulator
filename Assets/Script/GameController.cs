@@ -1,11 +1,11 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 public class GameController : MonoBehaviour
 {
-	
+
 	Player testPlayer = new Player ("testPlayer");
 	Level testLevel = new Level (0, 0);
 	Passenger testPassenger = new Passenger (0);
@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
 	{
 		GameObject PlayerObject = GameObject.Find ("taxi");
 		PlayerObject.transform.position = new Vector3 (testLevel.getLevelx(), testLevel.getLevely(), 0);
-        
+
 	}
 
     void FixedUpdate()
