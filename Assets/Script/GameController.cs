@@ -7,7 +7,6 @@ public class GameController : MonoBehaviour
 {
 
 	Player testPlayer = new Player ("testPlayer");
-	Level testLevel = new Level (0, 0);
 	Passenger testPassenger = new Passenger (0);
 	Boolean died = false;
 
@@ -15,8 +14,6 @@ public class GameController : MonoBehaviour
 	void Start ()
 	{
 		GameObject PlayerObject = GameObject.Find ("taxi");
-		PlayerObject.transform.position = new Vector3 (testLevel.getLevelx(), testLevel.getLevely(), 0);
-
 	}
 
     void FixedUpdate()

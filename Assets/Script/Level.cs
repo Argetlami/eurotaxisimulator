@@ -10,12 +10,14 @@ public class Level
 	private Passenger passenger;
 	private Boolean isCutscene;
 
-	public Level (float x, float y)
+    
+
+	public Level (float x, float y, Boolean isCutScene)
 	{
 		this.x = x;
 		this.y = y;
+        this.isCutscene = isCutScene;
 	}
-
 	public float getLevelx ()
 	{
 		return this.x;
@@ -25,4 +27,8 @@ public class Level
 	{
 		return this.y;
 	}
+    public Boolean isCutScene()
+    {
+        return this.isCutscene;
+    }
 }

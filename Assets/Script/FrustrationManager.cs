@@ -19,17 +19,20 @@ public class FrustrationManager : MonoBehaviour {
 	
     public static void manageFrustration(Passenger passenger)
     {
-        if (!PlayerController.speedCheck() && frustrationMeter.value < 100)
+        if (!PlayerController.frozen)
         {
-            passenger.adjustFrustration(0.1F);
-        }
-        else if (PlayerController.speedCheck() && frustrationMeter.value >= 0)
-        {
-            passenger.adjustFrustration(-0.1F);
-        }
-        if (frustration < 0)
-        {
-            passenger.setFrustration(0);
+            if (!PlayerController.speedCheck() && frustrationMeter.value < 100)
+            {
+                passenger.adjustFrustration(0.1F);
+            }
+            else if (PlayerController.speedCheck() && frustrationMeter.value >= 0)
+            {
+                passenger.adjustFrustration(-0.1F);
+            }
+            if (frustration < 0)
+            {
+                passenger.setFrustration(0);
+            }
         }
         frustrationMeter.value = passenger.getFrustration();
         frustration = passenger.getFrustration();
