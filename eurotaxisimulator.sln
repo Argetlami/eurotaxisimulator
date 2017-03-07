@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eurotaxisimulator", "Assembly-CSharp.csproj", "{4D6EEE93-B848-F5F4-04E1-8D7A9BD6EEF1}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eurotaxisimulator", "eurotaxisimulator.csproj", "{D67779B0-FFE7-362D-109D-2B4E560CB975}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4D6EEE93-B848-F5F4-04E1-8D7A9BD6EEF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D6EEE93-B848-F5F4-04E1-8D7A9BD6EEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D6EEE93-B848-F5F4-04E1-8D7A9BD6EEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D6EEE93-B848-F5F4-04E1-8D7A9BD6EEF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D67779B0-FFE7-362D-109D-2B4E560CB975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D67779B0-FFE7-362D-109D-2B4E560CB975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D67779B0-FFE7-362D-109D-2B4E560CB975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D67779B0-FFE7-362D-109D-2B4E560CB975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

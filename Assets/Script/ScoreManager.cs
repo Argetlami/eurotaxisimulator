@@ -24,7 +24,10 @@ public class ScoreManager : MonoBehaviour {
 
     public static void addMoney (double profit)
     {
-        money += profit;
+        if (!PlayerController.frozen)
+        {
+            money += profit;
+        }
     }
     public static void reset()
     {

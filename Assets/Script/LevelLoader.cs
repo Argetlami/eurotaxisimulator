@@ -7,22 +7,22 @@ public class LevelLoader : MonoBehaviour
 
     private bool playerInZone;
     GameObject PlayerObject;
-    Level levelToLoad;
+    public static Level levelToLoad;
     float x;
     float y;
 
     PlayerController playercontroller;
-    Level level1precs = new Level(0, -30, true);
-    Level level1 = new Level(0, 0, false);
-    Level level2 = new Level(0, 0, false);
-    Level level3 = new Level(0, 0, false);
+    public static Level cutscene = new Level(0, -30, true);
+    public static Level level1 = new Level(-16, 0, false);
+    public static Level level2 = new Level(205, 1, false);
+    public static Level level3 = new Level(420, 0, false);
 
     // Use this for initialization
     void Start()
     {
         playerInZone = false;
         GameObject PlayerObject = GameObject.Find("taxi");
-        LoadLevel(level1precs);
+        LoadLevel(cutscene);
     }
 
     // Update is called once per frame
@@ -54,10 +54,13 @@ public class LevelLoader : MonoBehaviour
         PlayerController.teleportTo(level.getLevelx(), level.getLevely());
         if (level.isCutScene())
         {
+            HudManager.setVisibility(false);
             PlayerController.Freeze(true);
         }
         else
         {
+            GameController.testPassenger.setFrustration(0);
+            HudManager.setVisibility(true);
             PlayerController.Freeze(false);
         }
     }

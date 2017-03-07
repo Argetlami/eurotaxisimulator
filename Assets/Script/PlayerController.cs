@@ -27,8 +27,10 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask whatIsGround;
+    public LayerMask whatIsBottom;
     private Boolean groundedWheel;
     private Boolean grounded;
+    private Boolean bottomed;
     private static Boolean speedChecker;
     public static float speed;
     public Boolean isLeftPressed = false;
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public Boolean isJumpPressed = false;
     public Boolean jumped = false;
     public static Boolean frozen;
+    public static Boolean movementCancelled;
 
     public PlayerController() { }
 
@@ -56,6 +59,11 @@ public class PlayerController : MonoBehaviour
     {
         groundedWheel = Physics2D.OverlapCircle(groundCheckWheel.position, groundCheckRadiusWheel, whatIsGround);
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        bottomed = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsBottom);
+        if (bottomed)
+        {
+            GameController.testPassenger.setFrustration(101);
+        }
         // Automatic acceleration
         if (!frozen)
         {
@@ -88,7 +96,7 @@ public class PlayerController : MonoBehaviour
         {
             jump();
         }
-        if (frozen)
+        if (frozen && !movementCancelled)
         {
             cancelMovement();
         }
@@ -168,18 +176,24 @@ public class PlayerController : MonoBehaviour
     }
     void cancelMovement()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        GetComponent<Rigidbody2D>().rotation = 0;
+        if (!movementCancelled)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            GetComponent<Rigidbody2D>().rotation = 0;
+            movementCancelled = true;
+        }
     }
     public static void Freeze(Boolean a)
     {
         if (a)
         {
             frozen = true;
+            movementCancelled = false;
         }
         else
         {
             frozen = false;
+            movementCancelled = true;
         }
     }
 }

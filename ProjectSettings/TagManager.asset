@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Player
   - TriggerZone
-  - 
+  - Bottom
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer
+    uniqueID: 2236444315
     locked: 0
