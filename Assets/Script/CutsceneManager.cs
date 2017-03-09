@@ -40,7 +40,7 @@ public class CutsceneManager : MonoBehaviour
 		bubble1 = GameObject.Find ("BubbleMain");
 		bubble2 = GameObject.Find ("BubblePassenger");
 		skip = GameObject.Find ("Skip").GetComponent<Button> ();
-		canvas = GameObject.Find ("CutsceneCanvas");
+        canvas = GameObject.Find ("CutsceneCanvas");
 		main = GameObject.Find ("MainText").GetComponent<Text> ();
 		pass = GameObject.Find ("PassengerText").GetComponent<Text> ();
 		skipTitle = GameObject.Find ("PressScreenToContinue");
@@ -125,6 +125,7 @@ public class CutsceneManager : MonoBehaviour
 		b.transform.localPosition = skipTitlepos;
 		main = a.transform.Find ("MainText").GetComponent<Text> ();
 		main.text = speech;
+        skip.transform.SetAsLastSibling();
 		while (!forward)
 			yield return null;
 		Destroy (a);
@@ -146,7 +147,8 @@ public class CutsceneManager : MonoBehaviour
 		b.transform.localPosition = skipTitlepos;
 		pass = a.transform.Find ("PassengerText").GetComponent<Text> ();
 		pass.text = speech;
-		while (!forward)
+        skip.transform.SetAsLastSibling();
+        while (!forward)
 			yield return null;
 		Destroy (a);
 		Destroy (b);
@@ -167,7 +169,8 @@ public class CutsceneManager : MonoBehaviour
 		b.transform.localPosition = skipTitlepos;
 		pass = a.transform.Find ("PassengerText").GetComponent<Text> ();
 		pass.text = speech;
-		while (!forward)
+        skip.transform.SetAsLastSibling();
+        while (!forward)
 			yield return null;
 		Destroy (a);
 		Destroy (b);
