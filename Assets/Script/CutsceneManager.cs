@@ -487,11 +487,12 @@ public class CutsceneManager : MonoBehaviour
 		while (!Physics2D.OverlapCircle (passenger.GetComponent<Rigidbody2D> ().position, passenger.GetComponent<CircleCollider2D> ().radius, ground))
 			yield return null;
 		forward = false;
-		while (boat.transform.position.x < 50) {
+		while (boat.transform.position.x < 25) {
 			boat.transform.Translate (0.01F, 0, 0);
 			yield return null;
 		}
-		forward = false;
+        HudManager.GameOver();
+        forward = false;
 		SceneManager.LoadScene ("title");
 	}
 
