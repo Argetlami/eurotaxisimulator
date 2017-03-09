@@ -2,31 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaxiMeter : MonoBehaviour {
+/// <summary>
+/// Taxi meter.
+/// </summary>
+public class TaxiMeter : MonoBehaviour
+{
+	//Fields
+	public float targetTime;
+	private float timer;
 
-    public float targetTime;
-    private float timer;
+	/// <summary>
+	/// At the start of this instance.
+	/// </summary>
+	private void Start ()
+	{
+		ScoreManager.addMoney (6.00);
+	}
 
-    private void Start()
-    {
-        ScoreManager.addMoney(6.00);
-    }
-	
-	// Update is called once per frame
-	void Update () {
+	/// <summary>
+	/// An update is called once per frame.
+	/// </summary>
+	void Update ()
+	{
 
-        timer -= Time.deltaTime;
+		timer -= Time.deltaTime;
 
-        if (timer <= 0.0f)
-        {
-            timerEnded();
-        }
+		if (timer <= 0.0f) {
+			timerEnded ();
+		}
 
-    }
+	}
 
-    void timerEnded()
-    {
-        ScoreManager.addMoney(1.57);
-        timer = targetTime;
-    }
+	/// <summary>
+	/// When timer hits 0, add 1.57 to the players money earned.
+	/// </summary>
+	void timerEnded ()
+	{
+		ScoreManager.addMoney (1.57);
+		timer = targetTime;
+	}
 }

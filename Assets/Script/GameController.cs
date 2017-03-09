@@ -4,34 +4,48 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Game controller.
+/// </summary>
 public class GameController : MonoBehaviour
 {
-
+	//Fields
 	Player testPlayer = new Player ("testPlayer");
-    public static Passenger testPassenger = new Passenger (0);
+	public static Passenger testPassenger = new Passenger (0);
 	Boolean died = false;
 
-	// Use this for initialization
+
+	/// <summary>
+	/// At the start of this instance.
+	/// </summary>
 	void Start ()
 	{
 		GameObject PlayerObject = GameObject.Find ("taxi");
+		died = false;
+		testPassenger.setFrustration (0);
 	}
 
-    void FixedUpdate()
-    {
-        FrustrationManager.manageFrustration(testPassenger);
-    }
+	/// <summary>
+	/// // FixedUpdate is called multiple times in a second; unlike Update(), it's based on time, not frames
+	/// </summary>
+	void FixedUpdate ()
+	{
+		FrustrationManager.manageFrustration (testPassenger);
+	}
 
-    // Update is called once per frame
-    void Update ()
+	/// <summary>
+	/// An update is called once per frame.
+	/// </summary>
+	void Update ()
 	{
 		if (testPassenger.getFrustration () >= 100) {
 			died = true;
 		}
-        if (died)
-        {
-            PlayerController.Freeze(true);
-            SceneManager.LoadScene("title");
-        }
+		if (died) {
+			HudManager.GameOver ();
+			PlayerController.Freeze (true);
+            
+			SceneManager.LoadScene ("title");
+		}
 	}
 }
